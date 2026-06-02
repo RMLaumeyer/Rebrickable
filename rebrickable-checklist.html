@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rebrickable Parts Checklist</title>
+  <link rel="stylesheet" href="rebrickable-checklist.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Parts Checklist</h1>
+      <p id="sourceLabel">Loading parts...</p>
+    </div>
+    <div class="summary" aria-live="polite">
+      <span><strong id="completeCount">0</strong>/<span id="totalCount">0</span> complete</span>
+      <span><strong id="ownedCount">0</strong>/<span id="neededCount">0</span> pieces</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Checklist controls">
+      <label class="search">
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="Part, color, or name">
+      </label>
+      <div class="segmented" role="group" aria-label="Filter parts">
+        <button class="active" type="button" data-filter="all">All</button>
+        <button type="button" data-filter="missing">Missing</button>
+        <button type="button" data-filter="partial">Partial</button>
+        <button type="button" data-filter="complete">Complete</button>
+      </div>
+      <button id="exportButton" class="utility" type="button">Export</button>
+      <button id="resetButton" class="utility danger" type="button">Reset</button>
+    </section>
+
+    <section id="partsGrid" class="parts-grid" aria-live="polite"></section>
+  </main>
+
+  <template id="partTemplate">
+    <article class="part-card">
+      <div class="image-wrap">
+        <img alt="">
+      </div>
+      <div class="qty-line"></div>
+      <div class="part-name"></div>
+      <div class="counter" aria-label="Owned count">
+        <button class="minus" type="button" aria-label="Decrease owned count">-</button>
+        <input type="number" min="0" inputmode="numeric" aria-label="Owned quantity">
+        <button class="plus" type="button" aria-label="Increase owned count">+</button>
+      </div>
+      <label class="check-wrap">
+        <input type="checkbox" aria-label="Mark complete">
+        <span></span>
+      </label>
+    </article>
+  </template>
+
+  <script src="rebrickable-checklist-data.js"></script>
+  <script src="rebrickable-checklist.js"></script>
+</body>
+</html>
