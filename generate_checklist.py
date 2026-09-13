@@ -410,7 +410,7 @@ def natural_chunks(text: str) -> list:
     for chunk in re.split(r"(\d+)", str(text).lower()):
         if not chunk:
             continue
-        chunks.append(int(chunk) if chunk.isdigit() else chunk)
+        chunks.append((0, int(chunk)) if chunk.isdigit() else (1, chunk))
     return chunks
 
 
